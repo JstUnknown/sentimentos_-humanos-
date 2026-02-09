@@ -28,3 +28,20 @@ function registrar(sentimento){
         finalizar()
     }
 }
+function finalizar(){
+    let sentimento_final="confuso";
+    let maior_valor= sentimentos.confuso;
+    for(let s in sentimentos){
+        if(sentimentos[s]>maior_valor){
+            maior_valor=sentimentos[s];
+            sentimento_final=s
+        }
+    }
+    resultado.innerHTML="Em função das suas respostas, você parece estar se sentindo: "+sentimento_final.toUpperCase();
+    falarResultado(sentimento_final)
+}
+
+function falarResultado(sentimento){
+    const msg=new SpeechSynthesisUtterance("analisando suas respostas. Você parece estar se sentindo "+sentimento);
+    speechSynthesis.speak(msg)
+}
